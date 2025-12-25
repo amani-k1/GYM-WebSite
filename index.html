@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO basics -->
+    <title>Peak Time Gym — Fitness, Cardio, Bien-être | Tunis</title>
+    <meta name="description" content="Peak Time Gym: coaching personnalisé, cours en groupe, nutrition et bien-être. Tarifs flexibles, équipements modernes, ouverte 7j/7 à Tunis." />
+    <meta name="theme-color" content="#277e05" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Peak Time Gym — Rejoignez-nous" />
+    <meta property="og:description" content="Améliorez votre forme avec nos coachs, cours, et programmes personnalisés." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/sallesport1.jpg" />
+
+    <!-- Performance: fonts & assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome removed: using react-icons to avoid third-party storage warnings -->
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Preload hero background image -->
+    <link rel="preload" as="image" href="/sallesport1.jpg" />
+
+    <!-- Security headers (CSP) - ajustée pour Google Maps & fonts -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.googleapis.com; connect-src 'self';" />
+
+    <!-- Inline critical CSS: skip link visibility -->
+    <style>
+      .skip-link{position:absolute;left:-999px;top:-999px;background:#111;color:#fff;padding:.5rem 1rem;border-radius:4px;z-index:1000}
+      .skip-link:focus{left:1rem;top:1rem}
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Passer au contenu</a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,313 @@
+/* CTA Section */
+.cta-section {
+  color: white;
+  position: relative;
+}
+
+.cta-background {
+  background-image: url("/sallesport1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 80px 20px;
+  width: 100%;
+}
+
+.cta-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.cta-background .container {
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-content {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.cta-content h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.join-now-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  border: none;
+  padding: 18px 45px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  margin-bottom: 20px;
+}
+
+.join-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+}
+
+.terms-text {
+  font-size: 0.9rem;
+  color: #999;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 15px 0;
+  position: relative;
+}
+
+/* Footer Content Layout */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* Footer Top Section */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.footer-brand h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ff6b6b;
+  margin: 0;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  color: white;
+  font-size: 1rem;
+  background-color: #333;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+/* Footer Divider */
+.footer-divider {
+  height: 1px;
+  background-color: #ff6b6b;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  padding: 10px 0;
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-column h4:hover {
+  color: #ff6b6b;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin: 0;
+}
+
+/* Divider Line */
+.footer-divider {
+  height: 1px;
+  background-color: #ff6b6b;
+  margin: 20px 0 0 0;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background-color: #ff6b6b;
+  transform: translateY(-3px);
+}
+
+/* Copyright Line */
+.copyright-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-top: 1px solid #ffcc00; /* Ligne jaune comme demandé */
+  margin-top: 20px;
+}
+
+.copyright-text {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+  color: #ff6b6b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .copyright-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 60px 20px 30px 20px;
+  }
+
+  .footer-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  .cta-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 0px;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .join-now-btn {
+    padding: 16px 35px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    gap: 20px;
+  }
+
+  .footer-column h4 {
+    font-size: 1rem;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.5rem;
+  }
+
+  .terms-text {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,123 @@
+.services-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.services-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+  transition: margin-bottom 0.3s ease;
+}
+
+/* Éliminer l'espace entre le titre et la description au hover de la carte */
+.service-card:hover h3 {
+  margin-bottom: 0;
+}
+
+/* Conteneur Learn More */
+.learn-more-container {
+  position: relative;
+  margin-top: auto;
+}
+
+/* Bouton Learn More - visible par défaut, caché au hover */
+.learn-more-btn {
+  width: 100%;
+  background-color: #277e05ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  opacity: 1;
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.learn-more-btn:hover {
+  background-color: #277e05ff;
+}
+
+/* Cacher le bouton au hover de la carte */
+.service-card:hover .learn-more-btn {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Description CACHÉE par défaut */
+.hidden-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: white;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Description VISIBLE au hover de la carte */
+.service-card:hover .hidden-description {
+  max-height: 200px;
+  opacity: 1;
+  margin: 0 0 0 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}

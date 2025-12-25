@@ -1,0 +1,87 @@
+.choose-container {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.choose-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-left: 10%;
+}
+
+.choose-content {
+  padding-left: 50px;
+  margin-left: 5%;
+  margin-right: 10%;
+}
+
+.choose-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.choose-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.benefits {
+  margin-bottom: 30px;
+}
+
+.benefit {
+  margin-bottom: 20px;
+}
+
+.benefit .checkmark {
+  color: #277e05ff;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.benefit h3 {
+  display: inline;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.benefit p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.cta-button {
+  background-color: #277e05ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #277e05ff;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .choose-container { flex-direction: column; padding: 20px; }
+  .choose-image img { margin-left: 0; }
+  .choose-content { padding-left: 0; margin-left: 0; margin-right: 0; }
+  .choose-content h1 { font-size: 1.8rem; }
+  .choose-content p { font-size: 1rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .choose-content { padding-left: 20px; margin-left: 2%; margin-right: 2%; }
+}
