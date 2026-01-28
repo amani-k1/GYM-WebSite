@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { useLanguage } from '../contexts/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
 import './Services.css';
-import initRevealOnScroll from '../hooks/useRevealOnScroll';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const Services = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
   // Appeler le hook au niveau racine du composant
-  useEffect(() => { initRevealOnScroll(); }, []);
+  useEffect(() => { useRevealOnScroll(); }, []);
 
   const services = [
     {

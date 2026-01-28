@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="56" viewBox="0 0 220 56" role="img" aria-label="Peak Time Gym logo">
+  <defs>
+    <style>
+      .title { font-family: Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; font-weight:700; font-size:18px; }
+      .brand { fill: #277e05; }
+      .gym { fill: #ffffff; }
+      .mark { fill: #277e05; }
+    </style>
+  </defs>
+  <!-- Transparent background -->
+  <rect width="220" height="56" fill="none" />
+
+  <!-- Simple circular mark -->
+  <g transform="translate(8,3)">
+    <circle cx="24" cy="24" r="22" class="mark" />
+    <text x="24" y="30" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="14" fill="#fff">PT</text>
+  </g>
+
+  <!-- Brand text -->
+  <g transform="translate(60,34)">
+    <text class="title brand" x="0" y="0">Peak Time </text>
+    <text class="title gym" x="95" y="0">Gym</text>
+  </g>
+</svg>

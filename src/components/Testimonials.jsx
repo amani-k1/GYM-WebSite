@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
 import './Testimonials.css';
 import { FaChevronLeft, FaChevronRight, FaEllipsisV } from 'react-icons/fa';
-import initRevealOnScroll from '../hooks/useRevealOnScroll';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const Testimonials = () => {
   const { language } = useLanguage();
@@ -13,8 +13,8 @@ const Testimonials = () => {
   const defaultTestimonials = [
     {
       id: 1,
-      name: "mahdi riahi",
-      role: language === 'fr' ? "entreneur" : "Marketing Executive",
+      name: "John Doe",
+      role: language === 'fr' ? "Directeur Marketing" : "Marketing Executive",
       text: language === 'fr' 
         ? "Rejoindre Peak Time Gym a été la meilleure décision que j'ai jamais prise pour ma santé. Les entraîneurs sont incroyablement encourageants, et les programmes personnalisés m'ont aidé à obtenir des résultats que je n'aurais jamais pensé possibles."
         : "Joining Peak Time Gym was the best decision I ever made for my health. The trainers are incredibly supportive, and the personalized programs have helped me achieve results I never thought possible.",
@@ -24,8 +24,8 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "khadija zhioua",
-      role: language === 'fr' ? "engenieure" : "Graphic Designer",
+      name: "Sarah Smith",
+      role: language === 'fr' ? "Designer Graphique" : "Graphic Designer",
       text: language === 'fr'
         ? "Les cours de groupe de Peak Time Gym sont tellement amusants et motivants. J'ai perdu 9 kilos et gagné énormément de confiance. La communauté ici est incroyable !"
         : "Peak Time Gym's group classes are so much fun and motivating. I've lost 20 pounds and gained a ton of confidence. The community here is amazing!",
@@ -35,8 +35,8 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      name: "amani khrayif",
-      role: language === 'fr' ? "engenieure" : "Entrepreneur",
+      name: "Mike Johnson",
+      role: language === 'fr' ? "Entrepreneur" : "Entrepreneur",
       text: language === 'fr'
         ? "L'approche holistique de Peak Time Gym a amélioré mon bien-être général. La combinaison de musculation, cardio et programmes de bien-être a changé ma vie."
         : "The holistic approach at Peak Time Gym has improved my overall well-being. The combination of strength training, cardio, and wellness programs has been life-changing.",
@@ -56,30 +56,23 @@ const Testimonials = () => {
   useEffect(() => {
     setTestimonials(prev => {
       const updated = prev.map(t => {
-        let u = { ...t };
-        if (u.name === 'John Doe') {
-          u.name = 'mahdi riahi';
-          if (language === 'fr') u.role = 'entreneur';
-        }
-        if (u.name === 'Sarah Smith') {
-          u.name = 'khadija zhioua';
-          if (language === 'fr') u.role = 'engenieure';
-        }
-        if (u.name === 'Mike Johnson') {
-          u.name = 'amani khrayif';
-          if (language === 'fr') u.role = 'engenieure';
-        }
-        if (u.avatar === '/avatar1.jpg') u.avatar = '/coach.jpg';
-        if (u.avatar === '/avatar2.jpg') u.avatar = '/group.jpg';
-        if (u.avatar === '/avatar3.jpg') u.avatar = '/coach.jpg';
-        return u;
+        if (t.name && String(t.name).toLowerCase().includes('mahdi')) return { ...t, avatar: '/mahdi.png' };
+        if (t.name && String(t.name).toLowerCase().includes('khadije')) return { ...t, avatar: '/khadije.png' };
+        if (t.name && String(t.name).toLowerCase().includes('khadija')) return { ...t, avatar: '/khadije.png' };
+        if (t.name && String(t.name).toLowerCase().includes('amani')) return { ...t, avatar: '/amani.jpg' };
+        if (t.avatar === '/avatar1.jpg') return { ...t, avatar: '/coach.jpg' };
+        if (t.avatar === '/avatar2.jpg') return { ...t, avatar: '/group.jpg' };
+        if (t.avatar === '/avatar3.jpg') return { ...t, avatar: '/coach.jpg' };
+        return t;
       });
-      if (JSON.stringify(updated) !== JSON.stringify(prev)) {
-        localStorage.setItem('testimonials', JSON.stringify(updated));
-      }
+      try {
+        if (JSON.stringify(updated) !== JSON.stringify(prev)) {
+          localStorage.setItem('testimonials', JSON.stringify(updated));
+        }
+      } catch (e) {}
       return updated;
     });
-  }, [language]);
+  }, []);
 
   // Index de départ pour le carousel (affiche 3 témoignages à la fois)
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -112,7 +105,7 @@ const Testimonials = () => {
   }, [testimonials]);
 
   // Activer les animations au scroll
-  useEffect(() => { initRevealOnScroll(); }, []);
+  useEffect(() => { useRevealOnScroll(); }, []);
 
   // Obtenir les témoignages visibles (3 à la fois)
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3);

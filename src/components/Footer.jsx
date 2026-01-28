@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { useLanguage } from '../contexts/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
 import './Footer.css';
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
-import initRevealOnScroll from '../hooks/useRevealOnScroll';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const Footer = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
-  useEffect(() => { initRevealOnScroll(); }, []);
+  useEffect(() => { useRevealOnScroll(); }, []);
 
   return (
     <footer className="footer-section reveal" style={{ transitionDelay: '100ms' }}>

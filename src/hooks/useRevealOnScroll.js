@@ -1,4 +1,4 @@
-export default function initRevealOnScroll() {
+export default function useRevealOnScroll() {
   if (typeof window === 'undefined') return;
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(

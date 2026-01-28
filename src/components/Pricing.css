@@ -84,14 +84,14 @@
 }
 
 .billing-toggle button.active {
-  background: #277e05ff;
+  background: #A4B01A;
   color: black;
 }
 
 /* Pricing Cards Grid - EN DESSOUS du header */
 .pricing-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 100%;
   clear: both;
@@ -114,14 +114,14 @@
 }
 
 .pricing-card.popular {
-  border: 2px solid #277e05ff;
+  border: 2px solid #A4B01A;
 }
 
 .popular-badge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #277e05ff;
+  background: #A4B01A;
   color: black;
   padding: 6px 12px;
   border-radius: 15px;
@@ -165,19 +165,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.price-table {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
-}
-
 .price-main {
   display: flex;
   align-items: baseline;
@@ -189,14 +176,14 @@
 .price-amount {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #277e05ff;
+  color: #A4B01A;
   line-height: 1;
 }
 
 .price-currency {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #277e05ff;
+  color: #A4B01A;
 }
 
 .price-comparison {
@@ -254,7 +241,7 @@
 
 .get-started-btn {
   width: 100%;
-  background: linear-gradient(45deg, #277e05ff, #8effacff);
+  background: linear-gradient(45deg, #A4B01A, #A4B01A);
   color: white;
   border: none;
   padding: 12px;
@@ -279,6 +266,7 @@
 }
 
 /* Responsive */
+/* Tablette large: réduire à 2 colonnes */
 @media (max-width: 1200px) {
   .pricing-cards {
     grid-template-columns: repeat(2, 1fr);
@@ -286,6 +274,7 @@
   }
 }
 
+/* Mobile Large et Tablette: ajuster typographies et 1 colonne */
 @media (max-width: 768px) {
   .pricing-section {
     padding: 60px 20px;
@@ -312,8 +301,17 @@
     flex: 1;
     max-width: 150px;
   }
+  .popular-badge {
+    font-size: 0.65rem;
+    top: 12px;
+    right: 12px;
+  }
+  .get-started-btn {
+    min-height: 44px;
+  }
 }
 
+/* Mobile: 320px - 480px */
 @media (max-width: 480px) {
   .pricing-header h2 {
     font-size: 1.8rem;
@@ -325,5 +323,27 @@
 
   .card-content {
     padding: 25px 20px;
+  }
+  .features-list li {
+    font-size: 0.85rem;
+  }
+  .get-started-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+/* Tablette: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 1025px et plus */
+@media (min-width: 1025px) {
+  .pricing-cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

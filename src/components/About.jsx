@@ -35,6 +35,75 @@ const About = () => {
         </div>
       </div>
 
+      {/* Trainers Section */}
+      <div className="trainers-section">
+        <div className="container">
+          <h2>{t.about.trainersTitle}</h2>
+          <p className="section-subtitle">{t.about.trainersSubtitle}</p>
+          
+          <div className="trainers-grid">
+            <div className="trainer-card">
+              <img src="/coach.jpg" alt={t.about.trainers.james.name} />
+              <h3>{t.about.trainers.james.name}</h3>
+              <p>{t.about.trainers.james.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            
+            <div className="trainer-card">
+              <img src="/group.jpg" alt={t.about.trainers.sophia.name} />
+              <h3>{t.about.trainers.sophia.name}</h3>
+              <p>{t.about.trainers.sophia.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            
+            <div className="trainer-card">
+              <img src="/nutrition.webp" alt={t.about.trainers.michael.name} />
+              <h3>{t.about.trainers.michael.name}</h3>
+              <p>{t.about.trainers.michael.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            
+            <div className="trainer-card">
+              <img src="/welness.jpg" alt={t.about.trainers.emily.name} />
+              <h3>{t.about.trainers.emily.name}</h3>
+              <p>{t.about.trainers.emily.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            
+            <div className="trainer-card">
+              <img src="/cardio.avif" alt={t.about.trainers.daniel.name} />
+              <h3>{t.about.trainers.daniel.name}</h3>
+              <p>{t.about.trainers.daniel.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            
+            <div className="trainer-card">
+              <img src="/service4.jpg" alt={t.about.trainers.olivia.name} />
+              <h3>{t.about.trainers.olivia.name}</h3>
+              <p>{t.about.trainers.olivia.role}</p>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/peaktimegym"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/peaktimegym/"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Location Section */}
       <div className="location-section">

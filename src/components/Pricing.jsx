@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLanguage } from '../contexts/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
 import './Pricing.css';
 
@@ -11,31 +11,26 @@ const Pricing = () => {
   const plans = [
     {
       title: t.pricing.plans.musculation.title,
-      tiers: [
-        { label: t.pricing.duration, amount: "55" },
-        { label: "3 MOIS", amount: "150" },
-        { label: "6 MOIS", amount: "280" }
-      ],
+      price: "45",
+      originalPrice: "60",
+      duration: t.pricing.duration,
       features: t.pricing.plans.musculation.features
     },
     {
       title: t.pricing.plans.musculationCardio.title,
-      tiers: [
-        { label: t.pricing.duration, amount: "65" },
-        { label: "3 MOIS", amount: "170" },
-        { label: "6 MOIS", amount: "320" }
-      ],
+      price: "55",
+      originalPrice: "70",
+      duration: t.pricing.duration,
       features: t.pricing.plans.musculationCardio.features,
       popular: true
     },
     {
       title: t.pricing.plans.morningMusculation.title,
-      tiers: [
-        { label: t.pricing.duration, amount: "50" },
-        { label: "3 MOIS", amount: "140" },
-        { label: "6 MOIS", amount: "260" }
-      ],
-      features: t.pricing.plans.morningMusculationCardio.features
+      subtitle: t.pricing.plans.morningMusculation.subtitle,
+      price: "40",
+      originalPrice: "50",
+      duration: t.pricing.duration,
+      features: t.pricing.plans.morningMusculation.features
     }
   ];
 
@@ -78,30 +73,14 @@ const Pricing = () => {
                 </div>
 
                 <div className="price-section">
-                  {plan.tiers ? (
-                    <div className="price-table">
-                      {plan.tiers.map((tier, i) => (
-                        <div key={i} className="price-row">
-                          <span className="price-duration">{tier.label}</span>
-                          <div className="price-main">
-                            <span className="price-amount">{tier.amount}</span>
-                            <span className="price-currency">DT</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <>
-                      <div className="price-main">
-                        <span className="price-amount">{plan.price}</span>
-                        <span className="price-currency">DT</span>
-                      </div>
-                      <div className="price-comparison">
-                        <span className="original-price">{t.pricing.insteadOf} {plan.originalPrice} DT</span>
-                      </div>
-                      <p className="price-duration">{plan.duration}</p>
-                    </>
-                  )}
+                  <div className="price-main">
+                    <span className="price-amount">{plan.price}</span>
+                    <span className="price-currency">DT</span>
+                  </div>
+                  <div className="price-comparison">
+                    <span className="original-price">{t.pricing.insteadOf} {plan.originalPrice} DT</span>
+                  </div>
+                  <p className="price-duration">{plan.duration}</p>
                 </div>
 
                 <ul className="features-list">

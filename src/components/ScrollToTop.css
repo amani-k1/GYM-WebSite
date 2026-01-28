@@ -1,0 +1,77 @@
+/* Styles du bouton "Retour en haut" (scroll to top) */
+.scroll-to-top {
+  /* Position fixe en bas à gauche de l'écran */
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  /* Taille et forme circulaire */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  /* Couleur principale (vert de la salle) et icône blanche */
+  background-color: #a4b01a;
+  color: #ffffff;
+
+  /* Apparence et accessibilité */
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+
+  /* Centrer l'icône flèche */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Effets de transition (apparition et hover) */
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  /* Légère ombre pour le relief */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Classe appliquée quand le bouton doit être visible */
+.scroll-to-top.visible {
+  opacity: 1;
+  animation: pulse-green 2s infinite;
+}
+
+/* Effet hover: arrêt de l'animation et agrandissement fixe */
+.scroll-to-top:hover {
+  background-color: #a4b01a;
+  animation: none;
+  transform: scale(1.1);
+}
+
+/* Animation de pulsation type "cœur qui bat" */
+@keyframes pulse-green {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(164, 176, 26, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(164, 176, 26, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(164, 176, 26, 0);
+  }
+}
+
+/* Responsive: réduire légèrement sur mobile et tablette */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 50px;
+    height: 50px;
+  }
+  .scroll-to-top svg {
+    width: 22px;
+    height: 22px;
+  }
+}

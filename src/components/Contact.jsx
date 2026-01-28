@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { useLanguage } from '../contexts/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
 import './Contact.css';
-import initRevealOnScroll from '../hooks/useRevealOnScroll';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const Contact = () => {
   const { language } = useLanguage();
@@ -30,7 +29,7 @@ const Contact = () => {
   }, []);
 
   // Activer les animations au scroll
-  useEffect(() => { initRevealOnScroll(); }, []);
+  useEffect(() => { useRevealOnScroll(); }, []);
 
   const sanitizeInput = (value) => {
     // Basic sanitization: remove script tags and strip HTML
@@ -101,7 +100,7 @@ const Contact = () => {
       form.current,
       'CsjM160gVRBFxoCC_' // Remplacez par votre clé publique EmailJS
     )
-      .then(() => {
+      .then((result) => {
         setFormStatus({
           submitted: true,
           success: true,
@@ -136,28 +135,28 @@ const Contact = () => {
             <div className="contact-info reveal" style={{ transitionDelay: '120ms' }}>
               <h2>{t.contact.contactInfo}</h2>
               <div className="info-item">
-                <FaMapMarkerAlt />
+                <i className="fas fa-map-marker-alt"></i>
                 <div>
                   <h3>{t.contact.address}</h3>
                   <p>{t.contact.addressValue}</p>
                 </div>
               </div>
               <div className="info-item">
-                <FaPhone />
+                <i className="fas fa-phone"></i>
                 <div>
                   <h3>{t.contact.phone}</h3>
                   <p>{t.contact.phoneValue}</p>
                 </div>
               </div>
               <div className="info-item">
-                <FaEnvelope />
+                <i className="fas fa-envelope"></i>
                 <div>
                   <h3>{t.contact.email}</h3>
                   <p>{t.contact.emailValue}</p>
                 </div>
               </div>
               <div className="info-item">
-                <FaClock />
+                <i className="fas fa-clock"></i>
                 <div>
                   <h3>{t.contact.hours}</h3>
                   <p>{t.contact.hoursValue.split('\n').map((line, i) => <React.Fragment key={i}>{line}{i === 0 && <br />}</React.Fragment>)}</p>

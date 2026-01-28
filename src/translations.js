@@ -3,20 +3,24 @@ export const translations = {
     // Header
     header: {
       home: "Accueil",
-      gallery: "Galerie",
       about: "À propos",
       services: "Services",
-      planning: "Planning",
       pricing: "Tarifs",
+      gallery: "Galerie",
       contact: "Contact",
       joinNow: "Rejoignez-nous"
     },
+    // Gallery
+    gallery: {
+      title: "NOTRE GALERIE",
+      subtitle: "Explorez nos installations de pointe et l'ambiance énergique de Galaxy Gym."
+    },
     // Hero
     hero: {
-      title: "TRANSFORMEZ VOTRE VIE AVEC PEAK TIME GYM",
-      subtitle: "Rejoignez Peak Time Gym dès aujourd'hui et découvrez un entraînement expert, des programmes personnalisés et une communauté solidaire pour atteindre vos objectifs fitness.",
-      getStarted: "Commencer",
-      watchDemo: "Voir la démo"
+      title: "BIENVENUE À PEAK TIME GYM",
+      subtitle: "Salle de sport et de Fitness",
+      getStarted: "LA SALLE",
+      watchDemo: "CONTACT"
     },
     // Choose
     choose: {
@@ -35,10 +39,6 @@ export const translations = {
         description: "Profitez d'une variété de cours et de programmes adaptés à tous les niveaux de fitness, du débutant à l'avancé."
       },
       freeTrial: "Essai gratuit aujourd'hui"
-    },
-    planning: {
-      title: "Planning des cours",
-      subtitle: "Bientôt disponible"
     },
     // Services
     services: {
@@ -89,7 +89,7 @@ export const translations = {
       monthly: "Mensuel",
       yearly: "Annuel",
       mostPopular: "Le plus populaire",
-      getStarted: "Contactez nous",
+      getStarted: "Commencer",
       registrationFee: "Frais d'inscription : 5 DT",
       offerNote: "Offre valable 15 jours",
       insteadOf: "au lieu de",
@@ -226,10 +226,8 @@ export const translations = {
     // Header
     header: {
       home: "Home",
-      gallery: "Gallery",
       about: "About",
       services: "Services",
-      planning: "Planning",
       pricing: "Pricing",
       contact: "Contact",
       joinNow: "Join Now"
@@ -258,10 +256,6 @@ export const translations = {
         description: "Enjoy a variety of classes and programs tailored to all fitness levels, from beginner to advanced."
       },
       freeTrial: "Free Trial Today"
-    },
-    planning: {
-      title: "Class Schedule",
-      subtitle: "Coming soon"
     },
     // Services
     services: {

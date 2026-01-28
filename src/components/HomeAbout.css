@@ -1,0 +1,54 @@
+.home-about {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.home-about__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.home-about__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.home-about__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #111;
+  margin: 24px 0 10px;
+}
+
+.home-about__paragraph {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.home-about__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .home-about__container {
+    grid-template-columns: 1fr;
+  }
+  .home-about {
+    padding: 40px 0;
+  }
+}

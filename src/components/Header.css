@@ -1,17 +1,31 @@
 /* === HEADER STYLING === */
 .header {
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.4); /* Fond noir semi-transparent */
+  backdrop-filter: blur(10px); /* Effet de flou */
+  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+  box-shadow: none;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.7); /* Plus opaque au scroll */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 /* Mobile text size refinement */
 @media (max-width: 768px) {
-  .logo h2 { font-size: 1rem; }
+  .logo h2 {
+    font-size: 1rem;
+  }
 }
 
 .container {
@@ -38,7 +52,12 @@
 .logo h2 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111;
+  color: #fff; /* White on transparent */
+  transition: color 0.3s ease;
+}
+
+.header.scrolled .logo h2 {
+  color: #111; /* Dark on scrolled */
 }
 
 /* === NAVIGATION === */
@@ -53,14 +72,24 @@
 
 .nav a {
   text-decoration: none;
-  color: #333;
+  color: #fff; /* White links initially */
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
+.header.scrolled .nav a {
+  color: #A4B01A;
+}
+
 .nav a:hover,
 .nav a.active {
-  color: #277e05ff;
+  color: #A4B01A;
+  /* For transparent header, maybe lighter green? #4caf50? */
+}
+
+/* Ensure active link is visible on transparent header */
+.header:not(.scrolled) .nav a.active {
+  color: #A4B01A;
 }
 
 /* === MOBILE MENU TOGGLE === */
@@ -70,21 +99,47 @@
   border: none;
   font-size: 1.4rem;
   cursor: pointer;
+  color: #fff; /* White toggle */
+  transition: color 0.3s ease;
+}
+}
+
+.header.scrolled .menu-toggle {
   color: #333;
 }
 
-/* === MOBILE NAV STYLES === */
+/* mobile-first hidden menu */
+.nav ul {
+  display: none;
+}
 .nav.open ul {
   display: flex;
+}
+.nav.open {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 200;
+}
+.nav.open ul {
   flex-direction: column;
   position: absolute;
-  top: 60px;
+  top: 64px;
   left: 0;
-  width: 100%;
-  background: #fff;
+  right: 0;
+  margin: 0;
   padding: 1rem 1.25rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  z-index: 200;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* In mobile menu, links should always be green/dark since background is white */
+@media (max-width: 768px) {
+  .nav.open ul a {
+    color: #A4B01A !important;
+  }
 }
 
 /* === HEADER ACTIONS === */
@@ -102,8 +157,8 @@
 
 .lang-btn {
   background-color: transparent;
-  color: #333;
-  border: 2px solid #277e05ff;
+  color: #fff;
+  border: 2px solid #fff;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   font-weight: 600;
@@ -112,15 +167,21 @@
   font-size: 0.9rem;
 }
 
+.header.scrolled .lang-btn {
+  color: #333;
+  border-color: #A4B01A;
+}
+
 .lang-btn:hover {
-  background-color: #277e05ff;
+  background-color: #A4B01A;
   color: #fff;
+  border-color: #A4B01A;
 }
 
 /* === JOIN BUTTON === */
 .join-btn a,
 .join-btn button {
-  background-color: #277e05ff;
+  background-color: #A4B01A;
   color: #fff;
   border: none;
   padding: 0.7rem 1.4rem;
@@ -134,13 +195,51 @@
 
 .join-btn a:hover,
 .join-btn button:hover {
-  background-color: #1f6a04;
+  background-color: #A4B01A;
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .menu-toggle { display: inline-block; }
-  .nav ul { display: none; }
+/* Mobile: 320px - 480px */
+@media (max-width: 480px) {
+  .menu-toggle {
+    display: inline-block;
+    font-size: 1.6rem;
+  }
+  .nav ul {
+    display: none;
+  }
+  .header-actions {
+    gap: 0.5rem;
+  }
+  .lang-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .logo h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Large: 481px - 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .menu-toggle {
+    display: inline-block;
+    font-size: 1.8rem;
+  }
+  .nav ul {
+    display: none;
+  }
+}
+
+/* Tablette: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .menu-toggle {
+    display: inline-block;
+    font-size: 2rem;
+  }
+  .nav ul {
+    display: none;
+  }
 
   .header-actions {
     gap: 0.5rem;
@@ -155,5 +254,17 @@
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
-  .logo h2 { font-size: 1rem; }
+  .logo h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop: 1025px et plus */
+@media (min-width: 1025px) {
+  .menu-toggle {
+    display: none;
+  }
+  .nav ul {
+    display: flex;
+  }
 }

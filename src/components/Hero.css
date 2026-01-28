@@ -8,10 +8,10 @@ body,
 
 .hero {
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url("/sallesport1.jpg");
+  background-image: url("/fascade.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -36,113 +36,209 @@ body,
 /* === TEXT CONTENT === */
 .hero-content {
   width: 100%;
-  /* légère translation vers le bas du bloc texte */
   transform: translateY(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-content h1 {
-  font-size: 4rem; /* taille large du texte principal */
-  font-weight: 800; /* gras marqué */
-  line-height: 1.05; /* texte compact entre lignes */
-  text-transform: uppercase; /* majuscules */
-  letter-spacing: 2px; /* espace léger entre lettres */
-  font-family: "Anton", sans-serif; /* police robuste et moderne */
-  color: #fff;
+/* Logo "Galaxy Gym" stylisé */
+.logo-text {
+  font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+  font-size: 6rem;
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.hero-content h1 span {
-  color: #277e05ff; /* partie colorée (FITLIFE) */
+/* Le mot "Gym" en jaune */
+.logo-text .gym-highlight {
+  color: #d3e156;
+  font-family: "Arial", "Helvetica", sans-serif;
+  font-weight: bold;
+  font-style: normal;
 }
 
-/* Paragraphe sous le titre */
-.hero-content p {
-  margin-top: 1.8rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #dcdcdc;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  max-width: 30%;
+/* Titre "BIENVENUE À PEAK TIME GYM" */
+.main-title {
+  font-family: "Arial", "Helvetica", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 1.5rem 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.2;
+}
+
+/* Sous-titre "Salle de sport et de Fitness" */
+.subtitle {
+  font-family: "Arial", "Helvetica", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  line-height: 1.3;
 }
 
 /* Espacement et alignement général du contenu */
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
+/* .hero-content block removed as it's defined above */
 
 /* === BUTTONS === */
 .hero-buttons {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .btn-primary {
-  background-color: #277e05ff;
+  background-color: #a4b01a;
   border: none;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.9rem 1.8rem;
-  border-radius: 5px;
+  color: #fff; /* White text */
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 4px; /* More square/sharp as per typical gym style */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.2s;
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-primary:hover {
-  background-color: #277e05ff;
+  background-color: transparent; /* Transparent on hover */
+  color: #fff; /* Keep text white */
+  border: 2px solid #a4b01a;
+  transform: translateY(-2px);
+}
+
+/* Ensure link states keep white text color */
+.btn-primary:link,
+.btn-primary:visited,
+.btn-primary:hover,
+.btn-primary:active {
+  color: #fff;
+  text-decoration: none;
 }
 
 .btn-secondary {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  display: none;
 }
 
 .play-icon {
   background-color: #fff;
-  color: #277e05ff;
+  color: #a4b01a;
   border-radius: 50%;
   padding: 0.2rem 0.45rem;
   font-size: 0.8rem;
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 1000px) {
+/* Mobile: 320px - 480px */
+@media (max-width: 480px) {
+  .hero {
+    height: 70vh;
+  }
+  .hero-overlay {
+    padding: 0 1rem;
+  }
+  .logo-text {
+    font-size: 2.8rem;
+  }
+  .main-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 360px;
+  }
+  .btn-primary {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  .hero-content {
+    transform: translateY(8px);
+  }
+}
+
+/* Mobile Large: 481px - 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero {
+    height: 75vh;
+  }
+  .hero-overlay {
+    padding: 0 1.25rem;
+  }
+  .logo-text {
+    font-size: 4rem;
+  }
+  .main-title {
+    font-size: 2.2rem;
+    line-height: 1.25;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  .hero-buttons {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .btn-primary {
+    min-height: 44px;
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+/* Tablette: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
   .hero-overlay {
     padding: 0 2rem;
     text-align: center;
   }
-
-  .hero-content h1 {
-    font-size: 2.6rem;
+  .main-title {
+    font-size: 2.5rem;
   }
-
-  .hero-content p {
-    font-size: 0.95rem;
+  .subtitle {
+    font-size: 1.2rem;
   }
-
   .hero-buttons {
     justify-content: center;
   }
 }
 
-@media (max-width: 768px) {
-  .hero { height: 70vh; }
-  .hero-overlay { padding: 0 1rem; }
-  .hero-content h1 { font-size: 2rem; line-height: 1.2; }
-  .hero-content p { max-width: 100%; font-size: 0.95rem; }
-  .hero-buttons { flex-wrap: wrap; gap: 0.8rem; }
-  .btn-primary { padding: 0.8rem 1.2rem; }
-  /* translation plus subtile sur mobile */
-  .hero-content { transform: translateY(8px); }
+/* Desktop: 1025px et plus */
+@media (min-width: 1025px) {
+  .hero {
+    height: 100vh;
+  }
+  .main-title {
+    font-size: 3.5rem;
+  }
+  .subtitle {
+    font-size: 1.4rem;
+  }
 }

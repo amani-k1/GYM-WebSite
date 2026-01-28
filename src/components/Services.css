@@ -18,7 +18,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -29,7 +29,9 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   padding: 20px;
   text-align: left;
   display: flex;
@@ -70,13 +72,11 @@
 
 /* Bouton Learn More - visible par défaut, caché au hover */
 .learn-more-btn {
-  width: 100%;
-  background-color: #277e05ff;
+  background-color: #a4b01a;
   color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 1rem;
   transition: all 0.3s ease;
   text-align: center;
@@ -86,7 +86,7 @@
 }
 
 .learn-more-btn:hover {
-  background-color: #277e05ff;
+  background-color: #a4b01a;
 }
 
 /* Cacher le bouton au hover de la carte */
@@ -120,4 +120,57 @@
   background: #f8f9fa;
   border-radius: 6px;
   border: 1px solid #e9ecef;
+}
+
+/* Responsive: Mobile 320-480 */
+@media (max-width: 480px) {
+  .services-section {
+    padding: 40px 16px;
+  }
+  .services-section h1 {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .services-grid {
+    gap: 18px;
+    grid-template-columns: 1fr;
+    max-width: 380px;
+  }
+  .service-card {
+    padding: 16px;
+  }
+  .service-card img {
+    height: 160px;
+  }
+  .learn-more-btn {
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Large 481-767 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .service-card img {
+    height: 180px;
+  }
+}
+
+/* Tablette 768-1024 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop 1025+ */
+@media (min-width: 1025px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
