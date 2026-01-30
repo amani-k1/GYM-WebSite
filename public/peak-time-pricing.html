@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peak Time Gym — Tarifs & Horaires</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Kanit:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon: #c4ff0e;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --text: #d9d9d9;
+      --muted: #9a9a9a;
+      --radius: 18px;
+      --shadow-neon: 0 0 12px rgba(196,255,14,0.45), 0 0 32px rgba(196,255,14,0.25);
+    }
+    * { box-sizing: border-box }
+    html, body { margin:0; padding:0; background:#000; color:var(--text) }
+    body { font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif }
+    .page {
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(196,255,14,0.08), transparent 50%),
+        radial-gradient(1200px 800px at 90% 10%, rgba(196,255,14,0.06), transparent 50%),
+        linear-gradient(180deg, #000 0%, var(--black) 100%);
+    }
+    .container { max-width:1180px; margin:0 auto; padding:24px }
+    .header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:28px 24px; border-radius:24px;
+      background:rgba(10,10,10,0.7);
+      backdrop-filter: blur(12px);
+      color:var(--white);
+    }
+    .title {
+      font-family: Oswald, Kanit, sans-serif;
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      letter-spacing: 1px;
+      color: var(--white);
+      text-shadow: 0 0 18px rgba(196,255,14,0.25);
+    }
+    .brand {
+      display:flex; align-items:center; gap:14px;
+      padding:10px 16px; border-radius:999px;
+      background: rgba(196,255,14,0.08);
+      color: var(--neon);
+      box-shadow: var(--shadow-neon);
+    }
+    .brand .dot { width:10px; height:10px; border-radius:50%; background:var(--neon) }
+    .section-title {
+      display:flex; align-items:center; gap:10px;
+      font-family: Oswald, Kanit, sans-serif;
+      color:var(--white);
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      margin:32px 0 18px;
+    }
+    .section-title .accent {
+      width:26px; height:6px; border-radius:999px; background:var(--neon);
+      box-shadow: var(--shadow-neon);
+    }
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:22px;
+    }
+    @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr } }
+    .flip3d {
+      perspective: 1200px;
+    }
+    .card {
+      position:relative; height:330px; border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow:hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      transform-style: preserve-3d;
+    }
+    .card-inner {
+      position:absolute; inset:0;
+      transform-style: preserve-3d;
+      transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+    }
+    .card:hover .card-inner { transform: rotateY(180deg) }
+    .face {
+      position:absolute; inset:0; padding:22px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      backface-visibility:hidden;
+    }
+    .face.front {
+      background:
+        radial-gradient(800px 400px at 0% 0%, rgba(196,255,14,0.1), transparent 40%),
+        rgba(10,10,10,0.6);
+    }
+    .face.back {
+      transform: rotateY(180deg);
+      background:
+        radial-gradient(800px 400px at 100% 0%, rgba(196,255,14,0.1), transparent 40%),
+        rgba(10,10,10,0.75);
+    }
+    .badge {
+      align-self:flex-start;
+      padding:6px 12px; border-radius:999px;
+      color:#000; background: var(--neon);
+      font-weight:700; font-size:13px;
+      box-shadow: var(--shadow-neon);
+    }
+    .course-name {
+      font-family: Oswald, Kanit, sans-serif;
+      color: var(--white);
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    }
+    .coach { color: var(--muted); font-size: 0.95rem }
+    .price {
+      display:flex; align-items:center; gap:10px;
+      color: var(--white); font-weight:700; font-size:1.25rem;
+    }
+    .price .unit { color: var(--muted); font-weight:600; font-size:.95rem }
+    .chips { display:flex; flex-wrap:wrap; gap:8px }
+    .chip {
+      padding:8px 12px; border-radius:999px; font-size:.9rem;
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      color: var(--white);
+      transition: transform .2s ease, box-shadow .3s ease;
+    }
+    .chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-neon) }
+    .limit { color: var(--muted); font-size:.92rem }
+    .unit-note { color: var(--neon); font-weight:700 }
+    .subs {
+      display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:20px;
+    }
+    @media (max-width: 840px) { .subs { grid-template-columns:1fr 1fr } }
+    @media (max-width: 520px) { .subs { grid-template-columns:1fr } }
+    .price-card {
+      position:relative; border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      overflow:hidden;
+      padding:24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-neon) }
+    .pc-head { display:flex; align-items:center; justify-content:space-between }
+    .pc-title {
+      font-family: Oswald, Kanit, sans-serif;
+      font-size:1.4rem; color: var(--white);
+    }
+    .pc-price { font-size:2.2rem; font-weight:800; color:var(--neon); text-shadow: var(--shadow-neon) }
+    .pc-feats { margin-top:14px; display:grid; gap:8px; color:var(--muted); font-size:.98rem }
+    .pc-best {
+      position:absolute; top:16px; right:-40px; transform: rotate(35deg);
+      background: var(--neon); color:#000; font-weight:800; padding:6px 60px;
+      text-transform:uppercase; letter-spacing:.6px; box-shadow: var(--shadow-neon)
+    }
+    .enroll-fee {
+      margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px;
+      background: rgba(196,255,14,0.12); color: var(--neon);
+      border:1px solid rgba(196,255,14,0.35);
+      box-shadow: var(--shadow-neon);
+      border-radius:999px; padding:12px 18px; font-weight:800;
+    }
+    .footer-note { text-align:center; color:var(--muted); margin-top:26px; font-size:.95rem }
+    .reveal { opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease }
+    .reveal.visible { opacity:1; transform:none }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <div class="header reveal">
+        <div class="title">Tarifs & Horaires</div>
+        <div class="brand"><span class="dot"></span><span>Peak Time Gym</span></div>
+      </div>
+
+      <div class="section-title reveal"><span class="accent"></span><span>Cours Collectifs</span></div>
+      <div class="grid flip3d">
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Mixte</div>
+              <div>
+                <div class="course-name">Cours Mixte</div>
+                <div class="coach">Coach</div>
+              </div>
+              <div>
+                <div class="price"><span>55 DT</span><span class="unit">/ séance</span></div>
+                <div class="chips">
+                  <span class="chip">Lundi 19h00</span><span class="chip">Mercredi 19h00</span><span class="chip">Vendredi 19h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Mixte</div>
+              <div class="limit">Plan flexible selon disponibilité</div>
+              <div class="chips"><span class="chip">Séance</span><span class="chip">Groupe</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Femmes</div>
+              <div>
+                <div class="course-name">Spéciale Femme</div>
+                <div class="coach">Coach Sahar</div>
+              </div>
+              <div>
+                <div class="price"><span>50 DT</span><span class="unit">/ séance</span></div>
+                <div class="chips">
+                  <span class="chip">Mardi 09h00</span><span class="chip">Mercredi 09h00</span><span class="chip">Samedi 10h30</span><span class="chip">Lundi 18h00</span><span class="chip">Mercredi 18h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Femmes</div>
+              <div class="limit">Maximum 3 séances/semaine</div>
+              <div class="chips"><span class="chip">Séance</span><span class="chip">Groupe</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Femmes</div>
+              <div>
+                <div class="course-name">Spéciale Femme</div>
+                <div class="coach">Coach Wala</div>
+              </div>
+              <div>
+                <div class="price"><span>50 DT</span><span class="unit">/ séance</span></div>
+                <div class="chips">
+                  <span class="chip">Mardi 17h30</span><span class="chip">Jeudi 18h00</span><span class="chip">Samedi 15h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Femmes</div>
+              <div class="limit">Maximum 3 séances/semaine</div>
+              <div class="chips"><span class="chip">Séance</span><span class="chip">Groupe</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Bac Sport</div>
+              <div>
+                <div class="course-name">Bac Sport</div>
+                <div class="coach">Coach Rawaa</div>
+              </div>
+              <div>
+                <div class="price"><span>50 DT</span><span class="unit">/ séance</span></div>
+                <div class="chips">
+                  <span class="chip">Vendredi 17h30</span><span class="chip">Dimanche 13h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Bac Sport</div>
+              <div class="limit">Séance unitaire <span class="unit-note">10 DT</span></div>
+              <div class="chips"><span class="chip">Préparation</span><span class="chip">Performance</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Kids</div>
+              <div>
+                <div class="course-name">Taekwondo Kids</div>
+                <div class="coach">Coach Sahar</div>
+              </div>
+              <div>
+                <div class="price"><span>40 DT</span><span class="unit">/ mois</span></div>
+                <div class="chips">
+                  <span class="chip">Samedi 16h00</span><span class="chip">Dimanche 10h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Taekwondo Kids</div>
+              <div class="limit">Initiation et discipline</div>
+              <div class="chips"><span class="chip">Kids</span><span class="chip">Arts martiaux</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-inner">
+            <div class="face front">
+              <div class="badge">Kids</div>
+              <div>
+                <div class="course-name">Gymnastique Kids</div>
+                <div class="coach">Coach Rawaa</div>
+              </div>
+              <div>
+                <div class="price"><span>40 DT</span><span class="unit">/ mois</span></div>
+                <div class="chips">
+                  <span class="chip">Samedi 12h00</span><span class="chip">Dimanche 12h00</span>
+                </div>
+              </div>
+            </div>
+            <div class="face back">
+              <div class="course-name">Gymnastique Kids</div>
+              <div class="limit">Souplesse et coordination</div>
+              <div class="chips"><span class="chip">Kids</span><span class="chip">Gym</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title reveal" style="margin-top:40px"><span class="accent"></span><span>Abonnements Musculation + Cardio</span></div>
+      <div class="subs">
+        <div class="price-card reveal">
+          <div class="pc-head">
+            <div class="pc-title">1 mois</div>
+            <div class="pc-price">60 DT</div>
+          </div>
+          <div class="pc-feats">
+            <div>Accès musculation + cardio illimité</div>
+            <div>Ambiance professionnelle et motivante</div>
+          </div>
+        </div>
+        <div class="price-card reveal">
+          <div class="pc-best">Meilleur choix</div>
+          <div class="pc-head">
+            <div class="pc-title">3 mois</div>
+            <div class="pc-price">160 DT</div>
+          </div>
+          <div class="pc-feats">
+            <div>Meilleur rapport qualité/prix</div>
+            <div>Accès musculation + cardio illimité</div>
+          </div>
+        </div>
+        <div class="price-card reveal">
+          <div class="pc-head">
+            <div class="pc-title">6 mois</div>
+            <div class="pc-price">290 DT</div>
+          </div>
+          <div class="pc-feats">
+            <div>Objectifs long terme</div>
+            <div>Accès musculation + cardio illimité</div>
+          </div>
+        </div>
+      </div>
+      <div class="enroll-fee reveal">Frais d'inscription 10 DT</div>
+      <div class="footer-note reveal">Horaires et tarifs susceptibles d'évolution. Contactez Peak Time Gym pour confirmation.</div>
+    </div>
+  </div>
+  <script>
+    const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})},{rootMargin:'-10% 0px -10% 0px',threshold:.05});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>

@@ -13,34 +13,34 @@ const Testimonials = () => {
   const defaultTestimonials = [
     {
       id: 1,
-      name: "John Doe",
-      role: language === 'fr' ? "Directeur Marketing" : "Marketing Executive",
+      name: "Mahdi Riahi",
+      role: language === 'fr' ? "Entrepreneur" : "Entrepreneur",
       text: language === 'fr' 
         ? "Rejoindre Peak Time Gym a été la meilleure décision que j'ai jamais prise pour ma santé. Les entraîneurs sont incroyablement encourageants, et les programmes personnalisés m'ont aidé à obtenir des résultats que je n'aurais jamais pensé possibles."
         : "Joining Peak Time Gym was the best decision I ever made for my health. The trainers are incredibly supportive, and the personalized programs have helped me achieve results I never thought possible.",
-      avatar: "/coach.jpg",
+      avatar: "/mahdi.png",
       rating: 5,
       userId: null // Témoignages par défaut - supprimables uniquement par admin
     },
     {
       id: 2,
-      name: "Sarah Smith",
-      role: language === 'fr' ? "Designer Graphique" : "Graphic Designer",
+      name: "Khadija Zhiouia",
+      role: language === 'fr' ? "Ingenieure" : "Engineer",
       text: language === 'fr'
         ? "Les cours de groupe de Peak Time Gym sont tellement amusants et motivants. J'ai perdu 9 kilos et gagné énormément de confiance. La communauté ici est incroyable !"
         : "Peak Time Gym's group classes are so much fun and motivating. I've lost 20 pounds and gained a ton of confidence. The community here is amazing!",
-      avatar: "/avatar2.jpg",
+      avatar: "/khadije.png",
       rating: 5,
       userId: null
     },
     {
       id: 3,
-      name: "Mike Johnson",
-      role: language === 'fr' ? "Entrepreneur" : "Entrepreneur",
+      name: "Amani Khrayif",
+      role: language === 'fr' ? "Ingenieure" : "Engineer",
       text: language === 'fr'
         ? "L'approche holistique de Peak Time Gym a amélioré mon bien-être général. La combinaison de musculation, cardio et programmes de bien-être a changé ma vie."
         : "The holistic approach at Peak Time Gym has improved my overall well-being. The combination of strength training, cardio, and wellness programs has been life-changing.",
-      avatar: "/avatar3.jpg",
+      avatar: "/amani.jpg",
       rating: 5,
       userId: null
     }
@@ -56,6 +56,9 @@ const Testimonials = () => {
   useEffect(() => {
     setTestimonials(prev => {
       const updated = prev.map(t => {
+        if (t.name === 'John Doe') return { ...t, name: 'Mahdi Riahi', role: language === 'fr' ? 'Entrepreneur' : 'Entrepreneur', avatar: '/mahdi.png' };
+        if (t.name === 'Sarah Smith') return { ...t, name: 'Khadija Zhiouia', role: language === 'fr' ? 'Ingenieure' : 'Engineer', avatar: '/khadije.png' };
+        if (t.name === 'Mike Johnson') return { ...t, name: 'Amani Khrayif', role: language === 'fr' ? 'Ingenieure' : 'Engineer', avatar: '/amani.jpg' };
         if (t.name && String(t.name).toLowerCase().includes('mahdi')) return { ...t, avatar: '/mahdi.png' };
         if (t.name && String(t.name).toLowerCase().includes('khadije')) return { ...t, avatar: '/khadije.png' };
         if (t.name && String(t.name).toLowerCase().includes('khadija')) return { ...t, avatar: '/khadije.png' };
@@ -65,11 +68,9 @@ const Testimonials = () => {
         if (t.avatar === '/avatar3.jpg') return { ...t, avatar: '/coach.jpg' };
         return t;
       });
-      try {
-        if (JSON.stringify(updated) !== JSON.stringify(prev)) {
-          localStorage.setItem('testimonials', JSON.stringify(updated));
-        }
-      } catch (e) {}
+      if (JSON.stringify(updated) !== JSON.stringify(prev)) {
+        localStorage.setItem('testimonials', JSON.stringify(updated));
+      }
       return updated;
     });
   }, []);
@@ -105,7 +106,7 @@ const Testimonials = () => {
   }, [testimonials]);
 
   // Activer les animations au scroll
-  useEffect(() => { useRevealOnScroll(); }, []);
+  useRevealOnScroll();
 
   // Obtenir les témoignages visibles (3 à la fois)
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + 3);
@@ -185,6 +186,9 @@ const Testimonials = () => {
     };
 
     setTestimonials(prev => [...prev, newTestimonial]);
+    const newLength = testimonials.length + 1;
+    const newIndex = Math.max(0, newLength - 3);
+    setCurrentIndex(newIndex);
     setFormData({
       name: '',
       role: '',
@@ -195,10 +199,6 @@ const Testimonials = () => {
     });
     setShowModal(false);
     
-    // Si c'est le 4ème témoignage, ajuster l'index pour voir les nouveaux
-    if (testimonials.length === 3) {
-      setCurrentIndex(0);
-    }
   };
 
   // Vérifier si l'utilisateur peut supprimer un témoignage

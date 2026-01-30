@@ -19,6 +19,11 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    document.documentElement.classList.remove('transparent', 'dark');
+    try { localStorage.removeItem('theme'); } catch {}
+  }, []);
+
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">

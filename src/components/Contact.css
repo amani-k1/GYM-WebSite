@@ -126,6 +126,14 @@
   color: #333;
 }
 
+.hours-title {
+  color: #a4b01a;
+}
+
+.hours-hero h3 {
+  color: #a4b01a;
+}
+
 .info-item p {
   color: #666;
   line-height: 1.5;

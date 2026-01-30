@@ -24,7 +24,317 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root.dark {
+  --color-bg: #000000;
+  --color-text: #eaeaea;
+  color-scheme: dark;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+:root.dark .nav.open ul {
+  background: #000000;
+}
+
+:root.dark .testimonials-section {
+  background-color: #000000;
+  color: var(--color-text);
+}
+:root.dark .testimonial-card {
+  background: #000000;
+  border-color: #333;
+}
+:root.dark .testimonial-text {
+  color: #bbbbbb;
+}
+:root.dark .author-info h4 {
+  color: #eeeeee;
+}
+:root.dark .author-info p {
+  color: #aaaaaa;
+}
+:root.dark .menu-dropdown {
+  background: #000000;
+  border-color: #333;
+}
+:root.dark .menu-item:hover {
+  background-color: #222;
+}
+:root.dark .modal-content {
+  background: #000000;
+  color: var(--color-text);
+}
+
+:root.dark .pricing-section {
+  background: #000000;
+  color: var(--color-text);
+}
+:root.dark .pricing-header h2 {
+  color: #eeeeee;
+}
+:root.dark .pricing-subtitle {
+  color: #aaaaaa;
+}
+:root.dark .billing-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+:root.dark .billing-toggle button {
+  color: #dddddd;
+}
+
+:root.dark .home-about {
+  background: #000000;
+}
+:root.dark .home-about__title,
+:root.dark .home-about__subtitle {
+  color: #eeeeee;
+}
+:root.dark .home-about__paragraph {
+  color: #bbbbbb;
+}
+
+:root.dark .contact-section {
+  background-color: #000000;
+}
+:root.dark .contact-info h2 {
+  color: #eeeeee;
+}
+
+:root.dark .choose-container {
+  background-color: #000000;
+  border-color: #333;
+}
+:root.dark .choose-content h1,
+:root.dark .benefit h3 {
+  color: #eeeeee;
+}
+:root.dark .choose-content p,
+:root.dark .benefit p {
+  color: #bbbbbb;
+}
+
+:root.dark .about-section,
+:root.dark .trainers-section {
+  background-color: #000000;
+}
+:root.dark .about-text h2,
+:root.dark .about-text h3 {
+  color: #eeeeee;
+}
+:root.dark .about-text p,
+:root.dark .section-subtitle {
+  color: #bbbbbb;
+}
+
+:root.dark .success-stories-section {
+  background-color: #000000;
+}
+:root.dark .stories-text h2 {
+  color: #eeeeee;
+}
+:root.dark .stories-description {
+  color: #bbbbbb;
+}
 /* Global reset for predictable sizing */
+
+/* Global transparent overlays */
+
+:root.transparent .nav.open ul {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+:root.transparent .testimonials-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .testimonial-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .testimonial-text {
+  color: #f0f0f0;
+}
+:root.transparent .author-info h4 {
+  color: #ffffff;
+}
+:root.transparent .author-info p {
+  color: #e0e0e0;
+}
+:root.transparent .menu-dropdown {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+:root.transparent .modal-content {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+:root.transparent .pricing-section {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .pricing-header h2 {
+  color: #ffffff;
+}
+:root.transparent .pricing-subtitle {
+  color: #e0e0e0;
+}
+:root.transparent .pricing-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+:root.transparent .home-about {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .home-about__title,
+:root.transparent .home-about__subtitle {
+  color: #ffffff;
+}
+:root.transparent .home-about__paragraph {
+  color: #f0f0f0;
+}
+
+:root.transparent .contact-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .contact-info h2 {
+  color: #ffffff;
+}
+
+:root.transparent .choose-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .choose-content h1,
+:root.transparent .benefit h3 {
+  color: #ffffff;
+}
+:root.transparent .choose-content p,
+:root.transparent .benefit p {
+  color: #f0f0f0;
+}
+
+:root.transparent .about-section,
+:root.transparent .trainers-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .about-text h2,
+:root.transparent .about-text h3 {
+  color: #ffffff;
+}
+:root.transparent .about-text p,
+:root.transparent .section-subtitle {
+  color: #f0f0f0;
+}
+
+:root.transparent .success-stories-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .stories-text h2 {
+  color: #ffffff;
+}
+:root.transparent .stories-description {
+  color: #f0f0f0;
+}
+:root.transparent .services-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .services-section h1 {
+  color: #ffffff;
+}
+:root.transparent .subtitle {
+  color: #e0e0e0;
+}
+:root.transparent .service-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .service-card h3 {
+  color: #ffffff;
+}
+:root.transparent .hidden-description {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e0e0e0;
+}
+:root.transparent .gallery-page {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .gallery-header h1 {
+  color: #ffffff;
+}
+:root.transparent .gallery-header p {
+  color: #e0e0e0;
+}
+:root.transparent .thumbnails-grid {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .thumbnail {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+:root.transparent .footer-section {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+:root.transparent .footer-legal-links a,
+:root.transparent .copyright-text {
+  color: #e0e0e0;
+}
+:root.transparent .footer-divider {
+  background-color: rgba(255, 255, 255, 0.25);
+}
 *,
 *::before,
 *::after {
@@ -85,6 +395,8 @@ body {
   display: block;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 h1 {

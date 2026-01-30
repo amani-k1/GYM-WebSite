@@ -1,111 +1,122 @@
-import React, { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { translations } from '../translations';
+import React, { useEffect } from 'react';
 import './Pricing.css';
+import useRevealOnScroll from '../hooks/useRevealOnScroll';
 
 const Pricing = () => {
-  const { language } = useLanguage();
-  const t = translations[language];
-  const [billingType, setBillingType] = useState('monthly');
-
-  const plans = [
+  const courses = [
     {
-      title: t.pricing.plans.musculation.title,
-      price: "45",
-      originalPrice: "60",
-      duration: t.pricing.duration,
-      features: t.pricing.plans.musculation.features
+      badge: 'Mixte',
+      name: 'Cours Mixte',
+      coach: 'Coach',
+      price: '55 DT',
+      unit: '/ séance',
+      chips: ['Lundi 19h00', 'Mercredi 19h00', 'Vendredi 19h00'],
+      backLimit: 'Plan flexible selon disponibilité',
+      backChips: ['Séance', 'Groupe']
     },
     {
-      title: t.pricing.plans.musculationCardio.title,
-      price: "55",
-      originalPrice: "70",
-      duration: t.pricing.duration,
-      features: t.pricing.plans.musculationCardio.features,
-      popular: true
+      badge: 'Femmes',
+      name: 'Spéciale Femme',
+      coach: 'Coach Sahar',
+      price: '50 DT',
+      unit: '/ séance',
+      chips: ['Mardi 09h00', 'Mercredi 09h00', 'Samedi 10h30', 'Lundi 18h00', 'Mercredi 18h00'],
+      backLimit: 'Maximum 3 séances/semaine',
+      backChips: ['Séance', 'Groupe']
     },
     {
-      title: t.pricing.plans.morningMusculation.title,
-      subtitle: t.pricing.plans.morningMusculation.subtitle,
-      price: "40",
-      originalPrice: "50",
-      duration: t.pricing.duration,
-      features: t.pricing.plans.morningMusculation.features
+      badge: 'Femmes',
+      name: 'Spéciale Femme',
+      coach: 'Coach Wala',
+      price: '50 DT',
+      unit: '/ séance',
+      chips: ['Mardi 17h30', 'Jeudi 18h00', 'Samedi 15h00'],
+      backLimit: 'Maximum 3 séances/semaine',
+      backChips: ['Séance', 'Groupe']
+    },
+    {
+      badge: 'Bac Sport',
+      name: 'Bac Sport',
+      coach: 'Coach Rawaa',
+      price: '50 DT',
+      unit: '/ séance',
+      chips: ['Vendredi 17h30', 'Dimanche 13h00'],
+      backLimit: 'Séance unitaire 10 DT',
+      backChips: ['Préparation', 'Performance']
+    },
+    {
+      badge: 'Kids',
+      name: 'Taekwondo Kids',
+      coach: 'Coach Sahar',
+      price: '40 DT',
+      unit: '/ mois',
+      chips: ['Samedi 16h00', 'Dimanche 10h00'],
+      backLimit: 'Initiation et discipline',
+      backChips: ['Kids', 'Arts martiaux']
+    },
+    {
+      badge: 'Kids',
+      name: 'Gymnastique Kids',
+      coach: 'Coach Rawaa',
+      price: '40 DT',
+      unit: '/ mois',
+      chips: ['Samedi 12h00', 'Dimanche 12h00'],
+      backLimit: 'Souplesse et coordination',
+      backChips: ['Kids', 'Gym']
     }
   ];
 
+  const subs = [
+    { title: '1 mois', price: '60 DT', best: false, feats: ['Accès musculation + cardio illimité', 'Ambiance professionnelle et motivante'] },
+    { title: '3 mois', price: '160 DT', best: true, feats: ['Meilleur rapport qualité/prix', 'Accès musculation + cardio illimité'] },
+    { title: '6 mois', price: '290 DT', best: false, feats: ['Objectifs long terme', 'Accès musculation + cardio illimité'] },
+  ];
+
+  useEffect(() => { useRevealOnScroll(); }, []);
+
   return (
-    <section className="pricing-section reveal" id='pricing'>
+    <section className="pricing-section" id='pricing'>
       <div className="container">
-        {/* Header Section - AU-DESSUS des cadres */}
-        <div className="pricing-header">
-          <h2>{t.pricing.title}</h2>
-          <p className="pricing-subtitle">
-            {t.pricing.subtitle}
-          </p>
-          
-          <div className="billing-toggle">
-            <button 
-              className={billingType === 'monthly' ? 'active' : ''}
-              onClick={() => setBillingType('monthly')}
-            >
-              {t.pricing.monthly}
-            </button>
-            <button 
-              className={billingType === 'yearly' ? 'active' : ''}
-              onClick={() => setBillingType('yearly')}
-            >
-              {t.pricing.yearly}
-            </button>
-          </div>
+        <div className="ptg-header">
+          <div className="ptg-title">Tarifs & Horaires</div>
+          <div className="ptg-brand"><span className="ptg-dot" />Peak Time Gym</div>
         </div>
 
-        {/* 4 Pricing Cards - EN DESSOUS du header */}
-        <div className="pricing-cards">
-          {plans.map((plan, index) => (
-            <div key={index} className={`pricing-card reveal ${plan.popular ? 'popular' : ''}`} style={{ transitionDelay: `${index * 120}ms` }}>
-              {plan.popular && <div className="popular-badge">{t.pricing.mostPopular}</div>}
-              
-              <div className="card-content">
-                <div className="card-header">
-                  <h3>{plan.title}</h3>
-                  {plan.subtitle && <p className="card-subtitle">{plan.subtitle}</p>}
-                </div>
+        <div className="ptg-section-title"><span className="ptg-accent" />Cours Collectifs</div>
+        <div className="ptg-grid">
+          {courses.map((c, i) => (
+            <div className="ptg-simple-card" key={i}>
+              <div className="ptg-badge">
+                {c.badge === 'Femmes' ? `Femmes : ${c.coach.replace('Coach ', '')}` : c.badge}
+              </div>
+              <div className="ptg-course">{c.name}</div>
+              {c.badge !== 'Femmes' && <div className="ptg-coach">{c.coach}</div>}
+              <div className="ptg-price"><span>{c.price}</span><span className="ptg-unit">{c.unit}</span></div>
+              <div className="ptg-chips">
+                {c.chips.map((chip, j) => <span className="ptg-chip" key={j}>{chip}</span>)}
+              </div>
+              <div className="ptg-limit">{c.backLimit}</div>
+            </div>
+          ))}
+        </div>
 
-                <div className="price-section">
-                  <div className="price-main">
-                    <span className="price-amount">{plan.price}</span>
-                    <span className="price-currency">DT</span>
-                  </div>
-                  <div className="price-comparison">
-                    <span className="original-price">{t.pricing.insteadOf} {plan.originalPrice} DT</span>
-                  </div>
-                  <p className="price-duration">{plan.duration}</p>
-                </div>
-
-                <ul className="features-list">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx}>
-                      <span className="check-icon">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="card-footer">
-                  <p className="registration-info">{t.pricing.registrationFee}</p>
-                  <button
-                    className="get-started-btn"
-                    onClick={() => window.open(`https://wa.me/${t.contact.phoneValue.replace(/\D/g, '')}`, '_blank')}
-                  >
-                    {t.pricing.getStarted}
-                  </button>
-                  <p className="offer-note">{t.pricing.offerNote}</p>
-                </div>
+        <div className="ptg-section-title"><span className="ptg-accent" />Abonnements Musculation + Cardio</div>
+        <div className="ptg-subs">
+          {subs.map((s, i) => (
+            <div className="ptg-price-card" key={i}>
+              {s.best && <div className="ptg-best">Meilleur choix</div>}
+              <div className="ptg-pc-head">
+                <div className="ptg-pc-title">{s.title}</div>
+                <div className="ptg-pc-price">{s.price}</div>
+              </div>
+              <div className="ptg-pc-feats">
+                {s.feats.map((f, j) => <div key={j}>{f}</div>)}
               </div>
             </div>
           ))}
         </div>
+        <div className="ptg-enroll-fee">Frais d'inscription 10 DT</div>
+        <div className="ptg-footer-note">Horaires et tarifs susceptibles d'évolution. Contactez Peak Time Gym pour confirmation.</div>
       </div>
     </section>
   );

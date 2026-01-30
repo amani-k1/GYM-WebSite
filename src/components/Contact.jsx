@@ -125,6 +125,19 @@ const Contact = () => {
         <div className="container">
           <h1>{t.contact.heroTitle}</h1>
           <p>{t.contact.heroSubtitle}</p>
+          <div className="hours-hero">
+            <h3>{t.contact.hours}</h3>
+            <p>
+              {t.contact.hoursValue
+                .split('\n')
+                .map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -158,8 +171,8 @@ const Contact = () => {
               <div className="info-item">
                 <i className="fas fa-clock"></i>
                 <div>
-                  <h3>{t.contact.hours}</h3>
-                  <p>{t.contact.hoursValue.split('\n').map((line, i) => <React.Fragment key={i}>{line}{i === 0 && <br />}</React.Fragment>)}</p>
+                  <h3 className="hours-title">{t.contact.hours}</h3>
+                  <p>{t.contact.hoursValue.split('\n').map((line, i, arr) => <React.Fragment key={i}>{line}{i < arr.length - 1 && <br />}</React.Fragment>)}</p>
                 </div>
               </div>
             </div>
@@ -228,15 +241,34 @@ const Contact = () => {
 
       {/* Map Section */}
       <div className="map-section reveal" style={{ transitionDelay: '220ms' }}>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.76457410443!2d2.2769948739270253!3d48.85894658138326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sfr!2sfr!4v1647095345404!5m2!1sfr!2sfr" 
-          width="100%" 
-          height="450" 
-          style={{ border: 0 }} 
-          allowFullScreen="" 
+        <iframe
+          src="https://www.google.com/maps?q=Menzell%20Tmim%20Avenue%20de%20la%20revolution&hl=fr&z=16&output=embed"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen=""
           loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
           title="Google Maps"
         ></iframe>
+        <div style={{ textAlign: 'center', padding: '10px 0' }}>
+          <a
+            href="https://goo.gl/maps/oHEHRTFAvk54Prio6"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#a4b01a',
+              color: '#fff',
+              padding: '10px 16px',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              fontWeight: 600
+            }}
+          >
+            Voir sur Google Maps
+          </a>
+        </div>
       </div>
     </div>
   );
