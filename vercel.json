@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "gym-web-site-git-main-amani-khrayifs-projects.vercel.app"
+        }
+      ],
+      "destination": "https://gym-web-site-zeta.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}
